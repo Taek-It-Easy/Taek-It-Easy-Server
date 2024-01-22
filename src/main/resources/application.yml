@@ -1,0 +1,13 @@
+server:
+  port: 9000  # 9000번 포트로 실행
+
+spring:
+  application:
+    name: demo
+
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://35.197.7.65:3306/take_it_easy
+    username: root
+    password: takeiteasy
+    driver-class-name: com.mysql.cj.jdbc.Driver
