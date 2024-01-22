@@ -31,6 +31,10 @@ public enum BaseResponseStatus {
     POST_USERS_EXISTS_EMAIL(false,2017,"중복된 이메일입니다."),
 
 
+    //[GET] /cosine
+    GET_CAMERA_COSINE_EMPTY_POSE(false, 2100, "pose를 입력해주세요."),
+    GET_CAMERA_COSINE_COUNT_POSE(false, 2101, "pose는 17개의 점이 필요합니다."),
+
 
     /**
      * 3000 : Response 오류

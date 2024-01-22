@@ -2,7 +2,6 @@ package com.example.demo.src.badge;
 
 
 import com.example.demo.src.badge.model.GetBadgeRes;
-import com.example.demo.src.user.model.GetUserRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

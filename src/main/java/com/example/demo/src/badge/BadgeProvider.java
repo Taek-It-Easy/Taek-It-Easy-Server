@@ -3,8 +3,6 @@ package com.example.demo.src.badge;
 import com.example.demo.config.BaseException;
 import com.example.demo.src.badge.BadgeDao;
 import com.example.demo.src.badge.model.GetBadgeRes;
-import com.example.demo.src.user.UserDao;
-import com.example.demo.src.user.model.GetUserRes;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

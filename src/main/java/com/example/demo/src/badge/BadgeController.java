@@ -2,9 +2,6 @@ package com.example.demo.src.badge;
 
 import com.example.demo.src.badge.BadgeProvider;
 import com.example.demo.src.badge.BadgeService;
-import com.example.demo.src.user.UserProvider;
-import com.example.demo.src.user.UserService;
-import com.example.demo.src.user.model.GetUserRes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.demo.config.BaseException;

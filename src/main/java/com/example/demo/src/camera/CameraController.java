@@ -2,9 +2,6 @@ package com.example.demo.src.camera;
 
 import com.example.demo.src.camera.CameraProvider;
 import com.example.demo.src.camera.CameraService;
-import com.example.demo.src.user.model.GetUserRes;
-import com.example.demo.src.user.model.PostUserReq;
-import com.example.demo.src.user.model.PostUserRes;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
