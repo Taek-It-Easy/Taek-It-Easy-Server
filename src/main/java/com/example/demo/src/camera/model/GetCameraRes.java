@@ -14,7 +14,16 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetCameraRes {
-    private Integer chapterIdx;
-    private Double CDmax;
-    private Double CDavg;
+    private List<cameraResult> cameraResult;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class cameraResult{
+        private Integer poseSeq;
+        private Integer pOder;
+        private Double CDmax;
+        private Double CDavg;
+    }
+
 }
