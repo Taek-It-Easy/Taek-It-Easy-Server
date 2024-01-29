@@ -7,7 +7,7 @@ spring:
 
   datasource:
     platform: mysql
-    url: jdbc:mysql://35.197.7.65:3306/take_it_easy
+    url: jdbc:mysql://35.212.254.58:3306/taekItEasy
     username: root
     password: takeiteasy
     driver-class-name: com.mysql.cj.jdbc.Driver
