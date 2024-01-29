@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetTargetRes {
-    private Integer poseIdx;
+    private Integer contentIdx;
     private List<PoseData> pose;
 
     @Data

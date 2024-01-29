@@ -43,23 +43,18 @@ public class CameraController {
     // Body
     @ResponseBody
     @PostMapping("/cosine")
-    // GET method에서는 body 사용이 불가능하다는 오류가 발생함 -> post로 변경
+    // GET method에서는 body 사용이 불가능하다는 오류가 발생함
     public BaseResponse<GetCameraRes> findSimularity(@RequestBody GetCameraReq getCameraReq) {
         //System.out.println(getCameraReq.getChapterIdx());
-        int chapterIdx = getCameraReq.getPoseIdx();
-        if (getCameraReq == null || getCameraReq.getPoseList() == null || getCameraReq.getPoseList().isEmpty()) {
+        int chapterIdx = getCameraReq.getChapterIdx();
+        if (getCameraReq == null || getCameraReq.getPose() == null || getCameraReq.getPose().isEmpty()) {
             // Handle validation error - empty pose
             return new BaseResponse<>(GET_CAMERA_COSINE_EMPTY_POSE);
         }
-        List<GetCameraReq.PoseList> poseDataList = getCameraReq.getPoseList();
-
-        // poseList 내부의 pose 객체가 17개 존재하는지 확인
-        for (GetCameraReq.PoseList poseList : poseDataList) {
-            List<GetCameraReq.PoseData> GetPoseDataList = poseList.getPose();
-            if (GetPoseDataList.size() != 17) {
-                return new BaseResponse<>(GET_CAMERA_COSINE_COUNT_POSE);
-            }
+        if(getCameraReq.getPose().size() != 17){
+            return new BaseResponse<>(GET_CAMERA_COSINE_COUNT_POSE);
         }
+
         try {
             GetCameraRes getCameraRes = cameraProvider.cosineSimilarity(getCameraReq);
             return new BaseResponse<>(getCameraRes);
