@@ -35,10 +35,12 @@ public class CameraProvider {
         List<List<Float>> vReliability = new ArrayList<>();
         List<List<List<Float>>> PoseDataReq = new ArrayList<>();
 
+
         for (GetCameraReq.PoseList poseList : getCameraReq.getPoseList()) {
             List<GetCameraReq.PoseData> poseDataList = poseList.getPose();
             Integer pOrder = poseList.getP_order();
             pOrderList.add(pOrder);
+            System.out.println("p_order : " + pOrderList);
 
             for (GetCameraReq.PoseData poseData : poseDataList) {
                 float x = poseData.getX();
@@ -121,7 +123,7 @@ public class CameraProvider {
                 tReliabilityList = tReliability.get(k);
                 targetsList = allTargetList.get(k);
                 double max = 0;
-                int order = 0;
+                int order = 1;
 
                 for(int j = 0; j < PoseDataReq.size(); j++){
                     vReliabilityList = vReliability.get(j);
@@ -135,7 +137,7 @@ public class CameraProvider {
                         if (max < result_max) {
                             max = result_max;
                             int oderIdx = j;
-                            //System.out.println("pOder : " + j);
+                            System.out.println("pOder : " + pOrderList);
                             order = pOrderList.get(oderIdx);
                         }
                     }
@@ -145,6 +147,7 @@ public class CameraProvider {
                 }
 
                 System.out.println("result_CDmax : " + Cdmax);
+                System.out.println("pOder : " + pOrderList);
                 System.out.println("pOder : " + pOder);
 
             }
