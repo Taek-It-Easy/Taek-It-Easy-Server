@@ -26,9 +26,8 @@ public enum BaseResponseStatus {
     USERS_EMPTY_USER_ID(false, 2010, "유저 아이디 값을 확인해주세요."),
 
     // [POST] /users
-    POST_USERS_EMPTY_EMAIL(false, 2015, "이메일을 입력해주세요."),
-    POST_USERS_INVALID_EMAIL(false, 2016, "이메일 형식을 확인해주세요."),
-    POST_USERS_EXISTS_EMAIL(false,2017,"중복된 이메일입니다."),
+    POST_USERS_EMPTY_DEVICENUM(false, 2015, "디바이스 정보를 입력해주세요."),
+    POST_USERS_EXISTS_DEVICENUM(false,2016,"중복된 디바이스 정보입니다."),
 
 
     //[GET] /cosine
