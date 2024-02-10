@@ -4,6 +4,7 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.secret.Secret;
 import com.example.demo.src.camera.model.*;
 import com.example.demo.src.camera.CameraDao;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import io.swagger.models.auth.In;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,18 @@ public class CameraProvider {
         this.cameraDao = cameraDao;
     }
 
+//    public feedbackRes(GetCameraReq getCameraReq) throws BaseException{
+//
+//
+//    }
+//    public FeedbackRes feedbackRes(int userIdx) throws BaseException {
+//        try {
+//            GetUserRes getUserRes = userDao.getUser(userIdx);
+//            return getUserRes;
+//        } catch (Exception exception) {
+//            throw new BaseException(DATABASE_ERROR);
+//        }
+//    }
 
     public GetCameraRes cosineSimilarity(GetCameraReq getCameraReq) throws BaseException {
         List<Float> vReliabilityList = new ArrayList<>();
@@ -68,6 +81,8 @@ public class CameraProvider {
 
         try {
             int poseIdx = getCameraReq.getPoseIdx();
+            GetPoseNumRes getPoseNumRes = cameraDao.getPoseNum(getCameraReq);
+            int poseNum = getPoseNumRes.getCnt();
             List<Integer> pOder = new ArrayList<>(Collections.nCopies(3, 0));
             List<Double> Cdmax = new ArrayList<>(Collections.nCopies(3, 0.0));
             List<Double> Cdavg = new ArrayList<>(Collections.nCopies(3, 0.0));
@@ -80,7 +95,7 @@ public class CameraProvider {
             List<List<Float>> tReliability = new ArrayList<>();
 
 
-            for(int i = 1; i <= 3; i++){
+            for(int i = 1; i <= poseNum; i++){
                 GetTargetRes getTargetRes = cameraDao.getTarget(getCameraReq, i);
                 //System.out.println(getTargetRes);
                 List<GetTargetRes.PoseData> poseTargetList = getTargetRes.getPose();
@@ -119,7 +134,7 @@ public class CameraProvider {
             //vector_v3안을 돌면서 target vector 와의 cosine similarity 를 구한 후 max 값과 그때의 인덱스(p_order)값 구하기
 
             // max
-            for(int k = 0; k < 3; k++){
+            for(int k = 0; k < poseNum; k++){
                 tReliabilityList = tReliability.get(k);
                 targetsList = allTargetList.get(k);
                 double max = 0;
@@ -129,7 +144,6 @@ public class CameraProvider {
                     vReliabilityList = vReliability.get(j);
                     vectorsList = PoseDataReq.get(j);
                     double result_max = calculateCDmax(vectorsList,targetsList, vReliabilityList, tReliabilityList);
-                    System.out.println("1");
                     if(j == 0){
                         max = result_max;
                     }
@@ -151,6 +165,8 @@ public class CameraProvider {
                 System.out.println("pOder : " + pOder);
 
             }
+
+            // 여기서 정의한 porder로 각 점마다 cosine similarity 비교하
 
             // avg
             for(int k = 0; k < 3; k++){
@@ -179,7 +195,7 @@ public class CameraProvider {
 
             GetCameraRes cameraRes = new GetCameraRes();
             cameraRes.setCameraResult(new ArrayList<>());
-            for (int i = 0; i < 3; i ++){
+            for (int i = 0; i < poseNum; i ++){
                 GetCameraRes.cameraResult cameraResult = new GetCameraRes.cameraResult();
 
                 cameraResult.setPoseSeq(i+1);
@@ -194,6 +210,8 @@ public class CameraProvider {
                 cameraRes.getCameraResult().add(cameraResult);
             }
 
+
+
             return cameraRes;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
@@ -203,6 +221,7 @@ public class CameraProvider {
     private static float calculateMagnitude(List<Float> vector) {
         return (float) Math.sqrt(vector.stream().mapToDouble(v -> v * v).sum());
     }
+
 
     public static float dotProduct(List<Float> vectorA, List<Float> vectorB) {
         // Ensure both vectors have the same size
@@ -217,6 +236,21 @@ public class CameraProvider {
         }
 
         return dotProduct;
+    }
+
+    private static double cosineSimilarity(List<Float> v, List<Float> t){
+        double cosineSimilarity;
+        float dotProduct = dotProduct(v, t);
+        float magnitudeV = calculateMagnitude(v);
+        float magnitudeT = calculateMagnitude(t);
+
+            if (magnitudeV == 0 || magnitudeT == 0) {
+                cosineSimilarity = 0;
+            } else {
+                cosineSimilarity = dotProduct / (magnitudeV * magnitudeT);
+            }
+
+        return cosineSimilarity;
     }
 
     private static double calculateCDmax(List<List<Float>> v, List<List<Float>> t, List<Float> vr, List<Float> tr){

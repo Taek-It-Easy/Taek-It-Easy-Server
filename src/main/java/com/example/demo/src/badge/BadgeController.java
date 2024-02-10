@@ -10,6 +10,7 @@ import com.example.demo.src.badge.model.*;
 import com.example.demo.utils.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import static com.example.demo.config.BaseResponseStatus.*;
 
 import java.util.List;
 
@@ -27,14 +28,15 @@ public class BadgeController {
 
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired  // 객체 생성을 스프링에서 자동으로 생성해주는 역할. 주입하려 하는 객체의 타입이 일치하는 객체를 자동으로 주입한다.
+     // 객체 생성을 스프링에서 자동으로 생성해주는 역할. 주입하려 하는 객체의 타입이 일치하는 객체를 자동으로 주입한다.
     // IoC(Inversion of Control, 제어의 역전) / DI(Dependency Injection, 의존관계 주입)에 대한 공부하시면, 더 깊이 있게 Spring에 대한 공부를 하실 수 있을 겁니다!(일단은 모르고 넘어가셔도 무방합니다.)
     // IoC 간단설명,  메소드나 객체의 호출작업을 개발자가 결정하는 것이 아니라, 외부에서 결정되는 것을 의미
     // DI 간단설명, 객체를 직접 생성하는 게 아니라 외부에서 생성한 후 주입 시켜주는 방식
     private final BadgeProvider badgeProvider;
-    @Autowired
+
     private final BadgeService badgeService;
 
+    @Autowired
     public BadgeController(BadgeProvider badgeProvider, BadgeService badgeService) {
         this.badgeProvider = badgeProvider;
         this.badgeService = badgeService;
@@ -45,8 +47,6 @@ public class BadgeController {
      * 뱃지 조회 API
      * [GET] /badge:userIdx=
      */
-
-
     //Query String
     @ResponseBody
     @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/app/badge/{userIdx}
@@ -65,4 +65,26 @@ public class BadgeController {
 
     }
 
+    /**
+     * 뱃지 등록 API
+     * [Post] /badge
+     */
+    // (GET) 127.0.0.1:9000/app/badge/new
+    //Body
+    @ResponseBody
+    @PostMapping("/new")
+    public BaseResponse<PostBadgeRes> postBadge(@RequestBody PostBadgeReq postBadgeReq) {
+        if(postBadgeReq.getUserIdx() == null){
+            return new BaseResponse<>(POST_USERS_EMPTY_USERIDX);
+        }
+        if(postBadgeReq.getBadgeIdx() == null){
+            return new BaseResponse<>(POST_USERS_EMPTY_BADGEIDX);
+        }
+        try {
+            PostBadgeRes postBadgeRes = badgeService.createBadge(postBadgeReq);
+            return new BaseResponse<>(postBadgeRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 }

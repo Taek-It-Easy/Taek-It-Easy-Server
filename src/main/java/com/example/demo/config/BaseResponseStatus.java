@@ -34,6 +34,11 @@ public enum BaseResponseStatus {
     GET_CAMERA_COSINE_EMPTY_POSE(false, 2100, "pose를 입력해주세요."),
     GET_CAMERA_COSINE_COUNT_POSE(false, 2101, "pose는 17개의 점이 필요합니다."),
 
+    //[POST] /badge
+    POST_USERS_EMPTY_USERIDX(false, 2200, "사용자 정보를 입력해주세요."),
+    POST_USERS_EMPTY_BADGEIDX(false,2201,"뱃지 정보를 입력해주세요."),
+    DUPLICATED_BADGE(false, 2202, "중복된 뱃지입니다."),
+
 
     /**
      * 3000 : Response 오류
