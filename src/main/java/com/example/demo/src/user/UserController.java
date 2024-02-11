@@ -1,5 +1,6 @@
 package com.example.demo.src.user;
 
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.demo.config.BaseException;
@@ -17,6 +18,7 @@ import java.util.Objects;
 import static com.example.demo.config.BaseResponseStatus.*;
 import static com.example.demo.utils.ValidationRegex.isRegexEmail;
 
+@Api(tags = "user API")
 @RestController
 @RequestMapping("/app/users")
 public class UserController {

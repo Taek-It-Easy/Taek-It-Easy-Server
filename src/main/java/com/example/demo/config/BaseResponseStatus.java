@@ -39,6 +39,8 @@ public enum BaseResponseStatus {
     POST_USERS_EMPTY_BADGEIDX(false,2201,"뱃지 정보를 입력해주세요."),
     DUPLICATED_BADGE(false, 2202, "중복된 뱃지입니다."),
 
+    //[GET] /video
+    GET_VIDEO_EMPTY_POSEIDX(false, 2301, "원하는 자세 정보를 입력해주세요."),
 
     /**
      * 3000 : Response 오류

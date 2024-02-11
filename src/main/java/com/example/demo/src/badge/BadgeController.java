@@ -2,6 +2,7 @@ package com.example.demo.src.badge;
 
 import com.example.demo.src.badge.BadgeProvider;
 import com.example.demo.src.badge.BadgeService;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.demo.config.BaseException;
@@ -14,6 +15,7 @@ import static com.example.demo.config.BaseResponseStatus.*;
 
 import java.util.List;
 
+@Api(tags = "badge API")
 @RestController // Rest API 또는 WebAPI를 개발하기 위한 어노테이션. @Controller + @ResponseBody 를 합친것.
 // @Controller      [Presentation Layer에서 Contoller를 명시하기 위해 사용]
 //  [Presentation Layer?] 클라이언트와 최초로 만나는 곳으로 데이터 입출력이 발생하는 곳

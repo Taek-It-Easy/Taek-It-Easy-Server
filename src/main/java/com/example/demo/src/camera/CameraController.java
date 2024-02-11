@@ -38,7 +38,7 @@ public class CameraController {
 
     /**
      * Cosine Similarity API
-     * [GET] /camera/cosine
+     * [POST] /camera/cosine
      */
     // Body
     @ResponseBody
