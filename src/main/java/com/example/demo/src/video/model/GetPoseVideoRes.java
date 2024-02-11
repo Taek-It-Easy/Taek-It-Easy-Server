@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetPoseVideoRes {
+    private int poseIdx;
     private String poseName;
     private String url;
 }
