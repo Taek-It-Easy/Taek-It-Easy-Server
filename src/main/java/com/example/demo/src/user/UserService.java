@@ -30,10 +30,14 @@ public class UserService {
 
     public PostUserRes createUser(PostUserReq postUserReq) throws BaseException {
         // 중복 확인: 디바이스 정보가 이미 있다면 회원가입 진행 멈춤
-        if (userProvider.checkDeviceNum(postUserReq.getDeviceNum()) == 1) {
-            throw new BaseException(POST_USERS_EXISTS_DEVICENUM);
+        if (userProvider.checkDeviceNum(postUserReq.getDeviceNum()) != 0) {
+            System.out.println("중복");
+            int userIdx = userDao.checkDeviceNum(postUserReq.getDeviceNum());
+            return new PostUserRes(userIdx);
         }
+
         try {
+            System.out.println("중복 아님");
             int userIdx = userDao.createUser(postUserReq);
             return new PostUserRes(userIdx);
 

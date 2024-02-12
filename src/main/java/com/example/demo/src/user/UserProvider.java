@@ -21,6 +21,7 @@ public class UserProvider {
 
     public int checkDeviceNum(String deviceNum) throws BaseException {
         try {
+            System.out.println(userDao.checkDeviceNum(deviceNum));
             return userDao.checkDeviceNum(deviceNum);
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);

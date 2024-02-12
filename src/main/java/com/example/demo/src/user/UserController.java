@@ -36,7 +36,6 @@ public class UserController {
     @ResponseBody
     @PostMapping("/sign-up")
     public BaseResponse<PostUserRes> createUser(@RequestBody PostUserReq postUserReq){
-        System.out.println("deviceNum" + postUserReq.getDeviceNum().isEmpty());
         if(postUserReq.getDeviceNum().isEmpty()){
             System.out.println("d1");
             return new BaseResponse<>(POST_USERS_EMPTY_DEVICENUM);
