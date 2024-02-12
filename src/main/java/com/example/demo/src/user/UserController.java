@@ -6,17 +6,11 @@ import org.slf4j.LoggerFactory;
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.user.model.*;
-import com.example.demo.utils.JwtService;
-import com.example.demo.src.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Objects;
-
 
 import static com.example.demo.config.BaseResponseStatus.*;
-import static com.example.demo.utils.ValidationRegex.isRegexEmail;
 
 @Api(tags = "user API")
 @RestController
@@ -55,4 +49,40 @@ public class UserController {
             return new BaseResponse<>((exception.getStatus()));
         }
     }
+
+    /**
+     * 사용자 진도 조회 API
+     * [GET] /users/contents/{userIdx}
+     */
+    //Path Variable
+    @ResponseBody
+    @GetMapping("/contents/{userIdx}") // (GET) 127.0.0.1:9000/app/users/contents/{userIdx}
+    // GET 방식의 요청을 매핑하기 위한 어노테이션
+    public BaseResponse<GetUserContentsRes> getUserContents(@PathVariable("userIdx") int userIdx) {
+        try {
+            GetUserContentsRes getUserPoseRes = userProvider.getUserContents(userIdx);
+            return new BaseResponse<>(getUserPoseRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+
+    }
+
+    /**
+     * 사용자 pose 진도 업데이트 API
+     * [PATCH] /users/pose/:userIdx/:poseIdx
+     */
+    @ResponseBody
+    @PatchMapping("/pose/{userIdx}/{poseIdx}")
+    public BaseResponse<String> modifyUserPose(@PathVariable("userIdx") int userIdx, @PathVariable("poseIdx") int poseIdx) {
+        try {
+            userService.modifyUserPose(userIdx, poseIdx);
+
+            String result = "회원정보가 수정되었습니다.";
+            return new BaseResponse<>(result);
+        } catch (BaseException exception) {
+            return new BaseResponse<>((exception.getStatus()));
+        }
+    }
+
 }

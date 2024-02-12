@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.List;
 
 @Repository
 public class UserDao {
@@ -34,4 +33,38 @@ public class UserDao {
                 int.class,
                 checkDeviceNumParams); // -> 쿼리문의 결과(존재하지 않음(False,0),존재함(True, 1))를 int형(0,1)으로 반환
     }
+
+    public int checkUserPose(int userIdx) {
+        String checkUserPoseQuery = "select exists(select userIdx from UserContentsList where userIdx = ?);"; // User Table에 해당 deviceNum 값을 갖는 유저 정보가 존재하는가?
+        int checkUserPoseParams = userIdx;
+        return this.jdbcTemplate.queryForObject(checkUserPoseQuery,
+                int.class,
+                checkUserPoseParams); // -> 쿼리문의 결과(존재하지 않음(False,0),존재함(True, 1))를 int형(0,1)으로 반환
+    }
+
+    // 사용자 pose 학습 진도 업데이트
+    public int modifyUserPose(int userIdx, int poseIdx) {
+        String modifyUserPoseQuery = "update UserContentsList set poseIdx = ? where userIdx = ?;";
+        Object[] modifyUserPoseParams = new Object[]{poseIdx, userIdx};
+        return this.jdbcTemplate.update(modifyUserPoseQuery, modifyUserPoseParams); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0)
+    }
+
+    public int insertUserPose(int userIdx, int poseIdx) {
+        String insertUserPoseQuery = "INSERT INTO UserContentsList (poseIdx, userIdx) VALUES (?, ?);";
+        Object[] insertUserPoseParams = new Object[]{poseIdx, userIdx};
+        return this.jdbcTemplate.update(insertUserPoseQuery, insertUserPoseParams); // 대응시켜 매핑시켜 쿼리 요청(생성했으면 1, 실패했으면 0)
+    }
+
+    public GetUserContentsRes getUserContents(int userIdx){
+        String getUserPoseQuery = " select userIdx, poseIdx, poomsaeIdx from UserContentsList where userIdx =?;";
+        int getUserPoseParam = userIdx;
+        return this.jdbcTemplate.queryForObject(getUserPoseQuery,
+                (rs, rowNum) -> new GetUserContentsRes(
+                        rs.getInt("userIdx"),
+                        rs.getInt("poseIdx"),
+                        rs.getInt("poomsaeIdx")),
+                getUserPoseParam);
+
+    }
+
 }
