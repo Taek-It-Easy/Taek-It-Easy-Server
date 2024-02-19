@@ -89,4 +89,20 @@ public class BadgeController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * 뱃지 목록 조회 API
+     * [Get] /badge/all
+     */
+    // (GET) 127.0.0.1:9000/app/badge/all
+    @ResponseBody
+    @GetMapping("/all")
+    public BaseResponse<List<GetBadgeAllRes>> getBadgeAll() {
+        try {
+            List<GetBadgeAllRes> getBadgeAllRes = badgeProvider.getBadgeAll();
+            return new BaseResponse<>(getBadgeAllRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 }

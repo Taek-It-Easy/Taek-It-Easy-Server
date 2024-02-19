@@ -2,8 +2,7 @@ package com.example.demo.src.badge;
 
 
 import com.example.demo.src.badge.model.GetBadgeRes;
-import com.example.demo.src.badge.model.PostBadgeReq;
-import com.example.demo.src.user.model.PostUserReq;
+import com.example.demo.src.badge.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -31,6 +30,15 @@ public class BadgeDao {
                         rs.getInt("badgeIdx"),
                         rs.getString("content")),
                 getBadgesParams);// RowMapper(위의 링크 참조): 원하는 결과값 형태로 받기 // 한 개의 회원정보를 얻기 위한 jdbcTemplate 함수(Query, 객체 매핑 정보, Params)의 결과 반환
+    }
+
+    // 모든 badge 목록 조회
+    public List<GetBadgeAllRes> getBadgeAll() {
+        String getUserQuery = "select badgeIdx, content from  badge where status = 1;"; // 해당 userIdx를 만족하는 유저를 조회하는 쿼리문
+        return this.jdbcTemplate.query(getUserQuery,
+                (rs, rowNum) -> new GetBadgeAllRes(
+                        rs.getInt("badgeIdx"),
+                        rs.getString("content")));// RowMapper(위의 링크 참조): 원하는 결과값 형태로 받기 // 한 개의 회원정보를 얻기 위한 jdbcTemplate 함수(Query, 객체 매핑 정보, Params)의 결과 반환
     }
 
     // badge 중복 확인

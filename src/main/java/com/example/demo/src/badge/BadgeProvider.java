@@ -3,10 +3,7 @@ package com.example.demo.src.badge;
 import com.example.demo.config.BaseException;
 import com.example.demo.src.badge.BadgeDao;
 import com.example.demo.src.badge.model.GetBadgeRes;
-import com.example.demo.src.badge.model.PostBadgeReq;
-import com.example.demo.src.camera.CameraDao;
-import com.example.demo.src.camera.CameraProvider;
-import com.example.demo.utils.JwtService;
+import com.example.demo.src.badge.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +31,16 @@ public class BadgeProvider {
     public List<GetBadgeRes> getBadges(int userIdx) throws BaseException {
         try {
             List<GetBadgeRes> getBadgeRes = badgeDao.getBadges(userIdx);
+            return getBadgeRes;
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    // 모든 뱃지 정보 조회
+    public List<GetBadgeAllRes> getBadgeAll() throws BaseException {
+        try {
+            List<GetBadgeAllRes> getBadgeRes = badgeDao.getBadgeAll();
             return getBadgeRes;
         } catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
