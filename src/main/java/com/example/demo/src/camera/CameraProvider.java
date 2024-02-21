@@ -83,9 +83,9 @@ public class CameraProvider {
             int poseIdx = getCameraReq.getPoseIdx();
             GetPoseNumRes getPoseNumRes = cameraDao.getPoseNum(getCameraReq);
             int poseNum = getPoseNumRes.getCnt();
-            List<Integer> pOder = new ArrayList<>(Collections.nCopies(3, 0));
-            List<Double> Cdmax = new ArrayList<>(Collections.nCopies(3, 0.0));
-            List<Double> Cdavg = new ArrayList<>(Collections.nCopies(3, 0.0));
+            List<Integer> pOder = new ArrayList<>(Collections.nCopies(poseNum, 0));
+            List<Double> Cdmax = new ArrayList<>(Collections.nCopies(poseNum, 0.0));
+            List<Double> Cdavg = new ArrayList<>(Collections.nCopies(poseNum, 0.0));
 
 
             List<Float> targetList = new ArrayList<>();
@@ -164,12 +164,15 @@ public class CameraProvider {
                 System.out.println("pOder : " + pOrderList);
                 System.out.println("pOder : " + pOder);
 
+                System.out.println("1");
+
             }
+
 
             // 여기서 정의한 porder로 각 점마다 cosine similarity 비교하
 
             // avg
-            for(int k = 0; k < 3; k++){
+            for(int k = 0; k < poseNum; k++){
                 tReliabilityList = tReliability.get(k);
                 targetsList = allTargetList.get(k);
                 double max = 0;

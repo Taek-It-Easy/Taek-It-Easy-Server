@@ -11,3 +11,6 @@ spring:
     username: root
     password: takeiteasy
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  openai.model: text-davinci-001
+  openai.secret-key : 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
