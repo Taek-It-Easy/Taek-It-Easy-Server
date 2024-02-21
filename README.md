@@ -36,4 +36,4 @@ g
 
 ### 🏭 Project overall structure
 
-![project_figure]()
+![project_figure](https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/89d713de-5d79-4cc6-a6b1-69e512d24a30)
