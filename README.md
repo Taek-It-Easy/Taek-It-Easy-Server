@@ -18,7 +18,23 @@
 - [`김지송`](https://github.com/NaZe0320) &nbsp; Android App Develop
 - [`이지환`](https://github.com/abcd-EGH) &nbsp; Model Research, Building Database, Image Preprocess 
 - [`조서우`](https://github.com/suwuim) &nbsp; Android App Develop, Design
-g
+
+  
+
+## 🎯 Target UN-SDGs
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/d477607d-a9c0-4c4b-9535-721537c82649" width="20%" height="30%">
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/f4a16fd6-0a95-421e-bae4-d84793aa08b4" width="20%" height="30%">
+
+
+### Goal 4. Equality Education
+   We provide equal opportunities to learn Taekwondo to people with intellectual disabilities.
+   This application can solve the problem that you want to learn but can't because you don't have the opportunity.
+      
+
+### Goal 10. Reduced Inequalities
+   Most gyms do not provide opportunities for people with intellectual disabilities to learn sports, citing the reason that people with intellectual disabilities cannot take classes with the general public.
+   Therefore, I believe that if they are provided with equal learning opportunities and the demand increases, gyms targeting people with intellectual disabilities will be created.
+   If people with intellectual disabilities show more interest in physical education classes and demand it from society, inequality in opportunities can gradually be resolved.
 
 
 ## Project Outline
@@ -34,6 +50,21 @@ g
     * When you film your posture through a camera, feedback is provided based on the similarity to a model posture.
     * Considering that the target users of the application are people with intellectual disabilities, we add interesting elements such as music and praise stickers to enable continuous learning.
 
+
+
 ### 🏭 Project overall structure
 
 ![project_figure](https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/89d713de-5d79-4cc6-a6b1-69e512d24a30)
+
+
+
+
+### 👀 Description of application execution process 
+
+
+* When visiting the application for the first time, users can automatically sign up as members by simply entering their age.
+     * Considering the fact that the user is an intellectually disabled person, the complexity of the app was minimized.
+
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/922432c1-8bf3-4084-893a-890b22c7aa00" width="20%" height="30%">
+
+* 
