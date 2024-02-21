@@ -10,4 +10,8 @@ import lombok.Setter;
 public class GetPoseRes {
     private int poseIdx;
     private String poseName;
+    private String poseEngName;
+    private String poseRomName;
+
+
 }

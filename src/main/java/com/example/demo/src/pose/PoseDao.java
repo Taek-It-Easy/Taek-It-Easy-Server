@@ -21,7 +21,9 @@ public class PoseDao {
         return this.jdbcTemplate.query(getUsersQuery,
                 (rs, rowNum) -> new GetPoseRes(
                         rs.getInt("poseIdx"),
-                        rs.getString("poseName"))
+                        rs.getString("poseName"),
+                        rs.getString("poseEngName"),
+                        rs.getString("poseRomName"))
         );
     }
 }
