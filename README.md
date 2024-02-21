@@ -1,4 +1,4 @@
-# 🥋 TaekItEasy
+# 🥋 Taek It Easy
 
 ## Let’s make it possible for people with intellectual disabilities to learn Taekwondo!
 
@@ -28,7 +28,12 @@ g
 * Goal
     * By developing a non-face-to-face special sports application for people with intellectual disabilities, we aim to provide them with opportunities to experience special sports and improve their physical and mental health.
     * In particular, we adopted Taekwondo, which can be practiced regardless of location and tool, and developed an effective and professional education application through collaboration with Taekwondo experts who directly educate people with intellectual disabilities.
+      
 * Core Features
     * Learn posture through Taekwondo learning videos filmed by Taekwondo experts
     * When you film your posture through a camera, feedback is provided based on the similarity to a model posture.
     * Considering that the target users of the application are people with intellectual disabilities, we add interesting elements such as music and praise stickers to enable continuous learning.
+
+### 🏭 Project overall structure
+
+![project_figure]()
