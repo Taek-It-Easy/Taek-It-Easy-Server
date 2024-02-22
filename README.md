@@ -74,7 +74,7 @@
   * As a result of testing the application with actual intellectually disabled people, they showed great interest when they switched to selfie mode and took pictures of themselves.
   * If you repeat the same action three times, learning ends with a badge awarded.
     
-<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/8ad7cbfc-91eb-43d6-917f-431dae86203d" width="20%" height="30%">
+<img src="https://storage.googleapis.com/taek_it_easy_bucket/Taekwondo_1%2C2%2C3%EC%9E%A5_%EA%B8%B0%EB%B3%B8%EB%8F%99%EC%9E%91_%ED%8E%B8%EC%A7%91%EB%B3%B8/gif/%E1%84%82%E1%85%A1%E1%84%8B%E1%85%B4%20%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC.gif" width="20%" height="30%">
 <img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/478ccc57-ffc3-466c-be5a-35af37d7eeb1" width="20%" height="30%">
 
 
