@@ -4,6 +4,7 @@
 
 ### Introduction 
 
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/b42fb547-939f-47fe-b0b8-bf5aa0bf248c">
 
 
 #### 👥 Members  
@@ -62,9 +63,25 @@
 ### 👀 Description of application execution process 
 
 
-* When visiting the application for the first time, users can automatically sign up as members by simply entering their age.
-     * Considering the fact that the user is an intellectually disabled person, the complexity of the app was minimized.
+1 ) When visiting the application for the first time, users can automatically sign up as members by simply entering their age.
+
+  * Considering the fact that the user is an intellectually disabled person, the complexity of the app was minimized.
 
 <img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/922432c1-8bf3-4084-893a-890b22c7aa00" width="20%" height="30%">
 
-* 
+2 ) When you take a picture of yourself, it recognizes your movements and analyzes the similarity to a model posture.
+
+  * As a result of testing the application with actual intellectually disabled people, they showed great interest when they switched to selfie mode and took pictures of themselves.
+  * If you repeat the same action three times, learning ends with a badge awarded.
+    
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/8ad7cbfc-91eb-43d6-917f-431dae86203d" width="20%" height="30%">
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/478ccc57-ffc3-466c-be5a-35af37d7eeb1" width="20%" height="30%">
+
+
+3 ) You can get rewards for learning through badges.
+
+  * Most programs that educate people with intellectual disabilities use a compliment sticker board, and our application includes that function as a badge.
+
+
+<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/540ebb3c-c3d4-4d25-b272-836d2ce80655" width="20%" height="30%">
+
