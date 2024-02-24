@@ -4,8 +4,7 @@
 
 ### Introduction 
 
-<img src="https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/101170415/b42fb547-939f-47fe-b0b8-bf5aa0bf248c">
-
+![TaekItEasy](https://github.com/Taek-It-Easy/Taek-It-Easy-Server/assets/140501944/6ffb2166-21f2-4928-91fb-394840c2efc5)
 
 #### 👥 Members  
 
