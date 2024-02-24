@@ -56,12 +56,14 @@ public class CameraProvider {
             System.out.println("p_order : " + pOrderList);
 
             for (GetCameraReq.PoseData poseData : poseDataList) {
+                int scaleX = getCameraReq.getScaleX();
+                int scaleY = getCameraReq.getScaleY();
                 float x = poseData.getX();
                 float y = poseData.getY();
-                float z = poseData.getZ();
+                float z = 1;
 
                 // Create a list containing [x, y, z] and add it to vectorsList
-                List<Float> vector = Arrays.asList(x, y, z);
+                List<Float> vector = Arrays.asList(x/scaleX, y/scaleY, z);
                 vectorsList.add(vector);
 
                 float reliability = poseData.getReliability();

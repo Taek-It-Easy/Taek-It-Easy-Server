@@ -15,6 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 public class GetCameraReq {
     private Integer poseIdx;
+    private Integer scaleX;
+    private Integer scaleY;
     private List<PoseList> poseList;
 
     @Data
