@@ -83,3 +83,26 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
+# 위 과정에서 푸시한 이미지를 서버에서 pull 받아서 실행시키는 과정 
+  run-docker-image-on-gcp:
+    # build-docker-image (위)과정이 완료되어야 실행됩니다.
+    needs: build
+    runs-on: self-hostedd
+
+    steps:
+      # 1. 최신 이미지를 풀받습니다
+      - name: docker pull
+        run: sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/taekiteasy
+      
+      # 2. 기존의 컨테이너를 중지시킵니다
+      - name: docker stop container
+        run: sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
+
+      # 3. 최신 이미지를 컨테이너화하여 실행시킵니다
+      - name: docker run new container
+        run: sudo docker run --name taekiteasy --rm -d -p 9001:8080 ${{ secrets.DOCKERHUB_USERNAME }}/taekiteasy
+
+      # 4. 미사용 이미지를 정리합니다
+      - name: delete old docker image
+        run: sudo docker system prune -f
